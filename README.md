@@ -26,3 +26,8 @@ Now you can run the scrapping methods! These include:
     
     # Returns the count of 'filter' available apartments in Allegro
     a.get_availability_count(filter) # e.g. filter = "Style D3"
+
+## TODO
+* Deploy this freaking thing somewhere (probz heroku)
+* Setup some sort of logging/mailing/noitification system (something very simple!)
+* Setup the schedule.rb file to run certain methods to notify us via the above ^^^

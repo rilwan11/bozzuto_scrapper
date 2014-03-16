@@ -1,29 +1,26 @@
-# AllegroScrapper
+# Allegro Scrapper
 
-TODO: Write a gem description
+## Install
+First, you must run:
+        
+        bundle install
+    
+This should setup all the dependencies. Now there is an executable console file you can tell bundle to run for testing purposes. Run this via:
+    
+    ENV=development bundle exec ./console
+        
+This will take you into the console enviroment. Now lets get started, create an Appartment::Scrapper object via:
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'allegro_scrapper'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install allegro_scrapper
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    
+    a = Appartment::Scrapper.new
+    
+Then, run:
+    
+    a.start # This will get the page data
+    
+Now you can run the scrapping methods! These include:
+    # Returns the count of all available apartments in Allegro
+    a.get_all_availability_count
+    
+    # Returns the count of 'filter' available apartments in Allegro
+    a.get_availability_count(filter) # e.g. filter = "Style D3"

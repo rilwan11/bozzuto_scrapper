@@ -1,25 +1,36 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :application, "allegro_scrapper"
+set :repository,  "https://github.com/Alexanderbez/bozzuto_scrapper.git"
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :scm, :git
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+set :use_sudo, false
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+set :whenever_environment, defer { stage }
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+ssh_options[:forward_agent] = true
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# This capistrano hook lets capistrano write to crontab
+require "whenever/capistrano"
+
+namespace :deploy do
+
+  desc "Update the crontab file"
+  task :update_crontab do
+    run "cd #{release_path} && ENV=#{environment} /usr/local/bin/bundle exec whenever --update-crontab #{application}"
+    run "crontab -l"
+  end
+
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    deploy.stop
+    deploy.start
+  end
+
+  desc "Install Bundle"
+  task :bundle_install, :roles => [:app, :worker] do
+    run "mkdir -p #{shared_path}/bundle && cd #{release_path} && bundle install --deployment --without development test --path #{shared_path}/bundle"
+  end
+end
+
+before 'deploy:create_symlink', 'deploy:bundle_install'
+
+after "deploy:create_symlink", "deploy:update_crontab"

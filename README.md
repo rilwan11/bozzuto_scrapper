@@ -3,7 +3,7 @@
 ## Install
 First, you must run:
         
-        bundle install
+    bundle install
     
 This should setup all the dependencies. Now there is an executable console file you can tell bundle to run for testing purposes. Run this via:
     

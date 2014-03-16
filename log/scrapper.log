@@ -1,0 +1,55 @@
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Found 24 available rooms
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style A3
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style A11
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style A2
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B37
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B10
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B7
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B6
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B4
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B5
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B2
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C27
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C5
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C15
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C4
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C12
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C14
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C33
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C17
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B15 Penthouse
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C3
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B5 Penthouse
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style B2 Penthouse
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style C11 Penthouse
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Bed count found: Style D1
+INFO     [time='2014-03-16 00:21:42 -0400' pid='43208' logger='main'] : Found 1 available rooms with filter: Style B7
+INFO     [time='2014-03-16 00:22:03 -0400' pid='43208' logger='main'] : Found 24 available rooms
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Found 24 available rooms
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style A3
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style A11
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style A2
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B37
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B10
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B7
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B6
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B4
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B5
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B2
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C27
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C5
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C15
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C4
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C12
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C14
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C33
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C17
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B15 Penthouse
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C3
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B5 Penthouse
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style B2 Penthouse
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style C11 Penthouse
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Bed count found: Style D1
+INFO     [time='2014-03-16 00:22:10 -0400' pid='43208' logger='main'] : Found 0 available rooms with filter: Style D3
+INFO     [time='2014-03-16 00:23:13 -0400' pid='43235' logger='main'] : Found 24 available rooms
+INFO     [time='2014-03-16 00:23:13 -0400' pid='43235' logger='main'] : Found 0 available rooms with filter: Style D3

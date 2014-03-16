@@ -8,12 +8,10 @@ module Appartment
   	attr_accessor :agent, :search_url, :page
 
   	def initialize(options = {})
-      # Required params
       # Right now this link is for Allegro only. In the future, add feature to scrape multiple
-      # site of Bozzuto
-      @search_url = "http://units.realtydatatrust.com/unittype.aspx?ils=345&propid=45386"
+      # sites of Bozzuto
 
-      # Optional params
+      @search_url = "http://units.realtydatatrust.com/unittype.aspx?ils=345&propid=45386"
       @agent = Mechanize.new
     end
 
@@ -24,36 +22,26 @@ module Appartment
 
     def get_price_range(entry)
     	price = entry.search("td[class='price']").text rescue "Could not find price :-("
-    	LOG.info("Price found: #{price}")
-
     	return price
     end
 
     def get_sq_ft(entry)
     	space = entry.search("td[class='sqft']").text rescue "Could not find sq. ft. :-("
-    	LOG.info("Bed count found: #{space}")
-
     	return space
     end
 
     def get_style(entry)
     	style = entry.search("td[class='floorPlan']").text rescue "Could not find style :-("
-    	LOG.info("Bed count found: #{style}")
-
     	return style
     end
 
     def get_bed(entry)
     	bed_count = entry.search("td[class='bed']").text rescue "Could not find bed count :-("
-    	LOG.info("Bed count found: #{bed_count}")
-
     	return bed_count
     end
 
     def get_bath(entry)
     	bath_count = entry.search("td[class='bath']").text rescue "Could not find bath count :-("
-    	LOG.info("Bed count found: #{bath_count}")
-
     	return bath_count
     end
 

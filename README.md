@@ -19,6 +19,8 @@ Then, run:
     a.start # This will get the page data
     
 Now you can run the scrapping methods! These include:
+
+
     # Returns the count of all available apartments in Allegro
     a.get_all_availability_count
     

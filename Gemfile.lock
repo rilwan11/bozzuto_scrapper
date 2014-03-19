@@ -8,6 +8,7 @@ PATH
       mechanize
       rake
       whenever
+      mail
 
 GEM
   remote: https://rubygems.org/

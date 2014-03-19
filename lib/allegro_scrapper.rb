@@ -1,6 +1,7 @@
 require 'logbert'
 require 'base64'
 require 'csv'
+require 'mail'
 
 LOG = Logbert[self]
 
@@ -55,7 +56,7 @@ module Apartment
 
     def get_all_availability
       # Hopefully this DOM element is consistent is does not change each time you visit the site lol
-      table 	= page.search(".//table[@id='ctl00_contentMain_uaGrid']/tbody")
+      table   = page.search(".//table[@id='ctl00_contentMain_uaGrid']/tbody")
       entries = table.search("tr")
       a = entries.select{|e| is_available?(e) }
 
@@ -63,8 +64,8 @@ module Apartment
     end
 
     def get_all_availability_count
-      count = get_availabilities.count
-      LOG.info("Found #{count} available rooms")
+      count = get_all_availability.count
+      LOG.info("Found #{count} available rooms!!!")
 
       return count
     end
@@ -73,21 +74,50 @@ module Apartment
 
       raise "Invalid argument. Must use an array!" if not filter.is_a?(Array)
 
-      available = get_availabilities
-      e = available.select{|a| filter.include? get_style(a) }
+      available = get_all_availability
+      e = available.select{|a| filter.include? self.class.get_style(a) }
 
       return e
     end
 
     def get_availability_count(filter)
       count = get_availability(filter).count
-      LOG.info("Found #{count} available rooms with filter(s): #{filter}")
+      LOG.info("Found #{count} available room(s) with filter(s): #{filter}")
 
       return count
     end
 
+    def get_all_styles
+      styles = get_all_availability
+      return styles.map{|s| self.class.get_style(s) }
+    end
+
     def is_available?(entry)
       return entry.search("td[class='button']").search("a").text == "View Availability"
+    end
+
+    def pretty_print(filter = nil)
+
+      if filter
+        styles = get_availability(filter)
+        get_availability_count(filter)
+      else
+        styles = get_all_availability
+        get_all_availability_count
+      end
+
+      LOG.info("----------------------------\n")
+      styles.each do |s|
+        LOG.info "Style: #{self.class.get_style(s)}"
+        LOG.info "Number Available: #{self.class.get_number_available(s)}"
+        LOG.info "Number of Beds: #{self.class.get_bed(s)}"
+        LOG.info "Number of Baths: #{self.class.get_bath(s)}"
+        LOG.info "Prince Range: #{self.class.get_price_range(s)}"
+        LOG.info "Square Feet: #{self.class.get_sq_ft(s)}"
+        LOG.info("----------------------------\n")
+      end
+
+      true
     end
 
   end
@@ -102,9 +132,9 @@ module Apartment
 
       CSV.open(log_file, "wb") do |csv|
         data.each do |d|
-          style 		= Apartment::Scrapper.get_style(d)
-          price 		= Apartment::Scrapper.get_price_range(d)
-          bed 			= Apartment::Scrapper.get_bed(d)
+          style     = Apartment::Scrapper.get_style(d)
+          price     = Apartment::Scrapper.get_price_range(d)
+          bed       = Apartment::Scrapper.get_bed(d)
           available = Apartment::Scrapper.get_number_available(d)
 
           csv << ["Style: #{style}", "Price: #{price}", "Beds: #{bed}", "Number Available: #{available}"]
@@ -114,18 +144,44 @@ module Apartment
       return log_file
     end
 
-
-    def send_email(file)
+    def self.send_email(file, emails)
 
       if File.exists?(file)
-        csv = File.open(file, "rb")
-        options = {:file_name => file, :file_contents => Base64.encode64(csv.read)}
 
-        # Send email here with the options
+        options = {
+          :address              => "smtp.gmail.com",
+          :port                 => 587,
+          :domain               => 'localhost',
+          :user_name            => 'test',
+          :password             => 'test',
+          :authentication       => 'plain',
+          :enable_starttls_auto => true
+        }
+
+        Mail.defaults do
+          delivery_method :smtp, options
+        end
+
+        csv = File.open(file, "rb")
+        options = {:file_name => file, :file_contents => csv.read}
+
+        e = ['rilwan11@gmail.com','abezobchuk90@gmail.com']
+
+        emails.each do |e|
+          Mail.deliver do
+            from      'robot@mailinator.com'
+            to        e
+            subject  'Allegro Apartment Update'
+            body     'Attached is the latest Scrapped Update'
+            add_file :filename => options[:file_name], :content => options[:file_contents]
+          end
+        end
 
         LOG.info("Closing csv file and deleting it!")
         csv.close
-        File.delete(file)
+        File.delete(csv)
+      else
+        LOG.info "File: #{file} does not exist!"
       end
     end
 

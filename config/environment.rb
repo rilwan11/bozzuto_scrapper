@@ -25,4 +25,5 @@ if RUBY_VERSION =~ /1.9/
 end
 
 require 'mechanize'
+require 'mail'
 require './lib/allegro_scrapper'
